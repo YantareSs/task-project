@@ -1,7 +1,7 @@
 import json
 import sys
 
-DEFAULT_PRIORITY = "high"
+DEFAULT_PRIORITY = "normal"
 PRIORITIES = ("low", "normal", "high")
 
 def load_tasks(path="tasks.json"):
