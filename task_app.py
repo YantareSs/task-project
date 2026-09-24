@@ -1,6 +1,8 @@
 import json
 import sys
 
+PRIORITIES = ("low", "normal", "high")
+
 def load_tasks(path="tasks.json"):
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -29,6 +31,11 @@ def mark_done(task_id, path="tasks.json"):
 def filter_by_status(done, path="tasks.json"):
     tasks = load_tasks(path)
     return [t for t in tasks if t["done"] == done]
+
+def validate_priority(priority):
+    if priority not in PRIORITIES:
+        raise ValueError(f"Invalid priority: {priority}")
+    return priority
 
 def main():
     tasks = load_tasks()
