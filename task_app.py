@@ -26,6 +26,10 @@ def mark_done(task_id, path="tasks.json"):
             t["done"] = True
     save_tasks(tasks, path)
 
+def filter_by_status(done, path="tasks.json"):
+    tasks = load_tasks(path)
+    return [t for t in tasks if t["done"] == done]
+
 def main():
     tasks = load_tasks()
     print("Загружено задач:", len(tasks))
