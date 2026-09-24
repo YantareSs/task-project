@@ -19,6 +19,13 @@ def add_task(title, path="tasks.json"):
     save_tasks(tasks, path)
     return new_id
 
+def mark_done(task_id, path="tasks.json"):
+    tasks = load_tasks(path)
+    for t in tasks:
+        if t["id"] == task_id:
+            t["done"] = True
+    save_tasks(tasks, path)
+
 def main():
     tasks = load_tasks()
     print("Загружено задач:", len(tasks))
