@@ -55,3 +55,6 @@ def main():
     tasks = load_tasks()
     print(f"Загружено задач: {len(tasks)}")
     print(f"Приоритет по умолчанию: {args.priority}")
+
+if __name__ == "__main__":
+    main()
