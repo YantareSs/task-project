@@ -1,3 +1,4 @@
+import argparse
 import json
 import sys
 
@@ -43,8 +44,14 @@ def sort_by_priority(tasks):
     return sorted(tasks, key=lambda t: order.get(t.get("priority", "normal"), 1))
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--priority",
+        choices=PRIORITIES,
+        default=DEFAULT_PRIORITY,
+        help="Приоритет по умолчанию",
+    )
+    args = parser.parse_args()
     tasks = load_tasks()
-    print("Загружено задач:", len(tasks))
-
-if __name__ == "__main__":
-    main()
+    print(f"Загружено задач: {len(tasks)}")
+    print(f"Приоритет по умолчанию: {args.priority}")
