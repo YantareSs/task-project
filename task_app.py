@@ -39,10 +39,6 @@ def validate_priority(priority):
         raise ValueError(f"Invalid priority: {priority}")
     return priority
 
-def sort_by_priority(tasks):
-    order = {"high": 0, "normal": 1, "low": 2}
-    return sorted(tasks, key=lambda t: order.get(t.get("priority", "normal"), 1))
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
