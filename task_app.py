@@ -12,6 +12,13 @@ def save_tasks(tasks, path="tasks.json"):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(tasks, f, ensure_ascii=False, indent=2)
 
+def add_task(title, path="tasks.json"):
+    tasks = load_tasks(path)
+    new_id = max([t["id"] for t in tasks], default=0) + 1
+    tasks.append({"id": new_id, "title": title, "done": False})
+    save_tasks(tasks, path)
+    return new_id
+
 def main():
     tasks = load_tasks()
     print("Загружено задач:", len(tasks))
